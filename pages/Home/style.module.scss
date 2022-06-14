@@ -1,0 +1,104 @@
+.homeContainer {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Markazi Text", serif;
+  font-size: 24px;
+  p {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+  }
+
+  .navbarContainer {
+    height: 90px;
+  }
+  .opening {
+    width: 100%;
+    display: flex;
+
+    .photo1 {
+      border-radius: 15px;
+      width: 45%;
+      height: 100%;
+      position: relative;
+      top: 110px;
+    }
+    .photo2 {
+      position: relative;
+      right: 250px;
+      top: 130px;
+    }
+
+    .openingText {
+      border: 1px solid #000;
+      background-color: rgba(255, 255, 255, 0.7);
+      padding: 0px 30px 0 30px;
+      border-radius: 13px;
+      width: 35vw;
+      height: auto;
+      position: absolute;
+      right: 790px;
+      top: 240px;
+
+      p {
+        font-size: 22px;
+      }
+    }
+  }
+
+  .Info {
+    margin-top: 100px;
+    width: 68vw;
+    height: auto;
+    background-image: url("../../public/infoBack.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+  }
+
+  .gallery {
+    margin-top: 100px;
+  }
+
+  .trips,
+  .QandA {
+    margin-top: 150px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    h1 {
+      align-self: center;
+    }
+  }
+  .trips {
+    background-image: url("../../public/tripBack.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: repeat-y;
+
+    .tripsNorth,
+    .tripsSouth {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      > div {
+        margin-left: 60px;
+        margin-bottom: 40px;
+      }
+    }
+  }
+  .QandA {
+    h4 {
+      margin: unset;
+      margin-top: 50px;
+    }
+    p {
+      margin: unset;
+      margin-top: 15px;
+    }
+  }
+}
