@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import style from "./style.module.scss";
-import { SliderData } from "./sliderData";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
+import useFireStorageGallery from "../../hooks/useFireStorageGallery";
 
-const ImageSlider = ({ slides }) => {
+const ImageSlider = () => {
+  const sliderData = useFireStorageGallery("Gallery");
+
   const [current, setCurrent] = useState(0);
-  const length = slides.length;
+  const length = sliderData.length;
 
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
@@ -15,7 +17,7 @@ const ImageSlider = ({ slides }) => {
     setCurrent(current === 0 ? length - 1 : current - 1);
   };
 
-  if (!Array.isArray(slides) || slides.length <= 0) {
+  if (!Array.isArray(sliderData) || sliderData.length <= 0) {
     return null;
   }
 
@@ -23,18 +25,14 @@ const ImageSlider = ({ slides }) => {
     <section className={style.slider}>
       <FaArrowAltCircleLeft className={style.leftArrow} onClick={prevSlide} />
       <FaArrowAltCircleRight className={style.rightArrow} onClick={nextSlide} />
-      {SliderData.map((slide, index) => {
+      {sliderData.map((slide, index) => {
         return (
           <div
             className={index === current ? style.slideActive : style.slide}
             key={index}
           >
             {index === current && (
-              <img
-                src={slide.image}
-                alt="travel image"
-                className={style.image}
-              />
+              <img src={slide} alt="travel image" className={style.image} />
             )}
           </div>
         );

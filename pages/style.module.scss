@@ -2,7 +2,70 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #eef2f1;
-  width: 100%;
-  height: 100%;
+  padding: 0 20px 0 20px;
+
+  > :nth-child(1) {
+    position: fixed !important;
+    bottom: 0;
+    top: unset !important;
+    height: 55px;
+    right: -20px !important;
+    width: 100%;
+    justify-content: space-around !important;
+    direction: ltr !important;
+    z-index: 1;
+    > div {
+      display: none;
+    }
+    > :nth-child(2) {
+      direction: rtl;
+      width: 100%;
+      display: block;
+      > ul {
+        > li {
+          > svg {
+            fill: aqua;
+            position: absolute;
+            width: 30px;
+            height: 30px;
+          }
+          > a {
+            padding-right: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .fronPageContaier {
+    > :nth-child(1) {
+      bottom: unset;
+      height: 50px;
+      right: 0 !important;
+      justify-content: space-between !important;
+      > div {
+        display: flex;
+      }
+      > :nth-child(2) {
+        direction: rtl;
+        width: 50%;
+        display: block;
+        > ul {
+          > li {
+            > svg {
+              position: unset;
+              width: 25px;
+              height: 25px;
+            }
+            > a {
+              padding-top: 10px;
+              padding-right: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
 }

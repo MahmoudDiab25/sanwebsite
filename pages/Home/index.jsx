@@ -1,40 +1,84 @@
 import ImageSlider from "../../comps/ImageSilder";
 import Trip from "../../comps/Trip";
 import style from "./style.module.scss";
-import { SliderData } from "../../comps/ImageSilder/sliderData";
+import useFirestore from "../../hooks/useFirestore";
+import React, { useEffect, useState } from "react";
+import { isMobile } from "react-device-detect";
+
 export default function Home() {
+  const [_isMobile, setMobile] = useState();
+
+  useEffect(() => {
+    setMobile(isMobile);
+  }, [setMobile]);
+
+  const { docs } = useFirestore("trips");
+  const trips = docs;
+
+  const [northenTrips, setNorthenTrips] = useState([]);
+  const [southernTrips, setSouthernTrips] = useState([]);
+
+  useEffect(() => {
+    trips.map((trip) => {
+      if (trip.location === "north") {
+        setNorthenTrips((northenTrips) => [...northenTrips, trip]);
+      }
+      if (trip.location === "south") {
+        setSouthernTrips((southernTrips) => [...southernTrips, trip]);
+      }
+    });
+  }, [trips]);
+
   return (
     <div className={style.homeContainer}>
-      <div className={style.navbarContainer}></div>
       <div className={style.opening}>
-        <img src="openPiture.JPG" alt="" className={style.photo1} />
-        <img src="tree.png" alt="" className={style.photo2} />
+        <img
+          hidden={_isMobile}
+          src="openPiture.JPG"
+          alt=""
+          className={style.photo1}
+        />
+        <img
+          hidden={_isMobile}
+          src="tree.png"
+          alt=""
+          className={style.photo2}
+        />
+        <img
+          hidden={!_isMobile}
+          src="tree-mobile.svg"
+          alt=""
+          className={style.photo2}
+        />
 
         <div className={style.openingText}>
-          <h2 id="Title">رفيق طريق</h2>
-          <p>
-            عالمنا مليء بالتجارب الرائعة، بلحظات سحرية، بمناظر طبيعية مجنونة،
-            بصور غير عادية ومشاعر سامية تحفر في أعماق الروح.
-          </p>
-          <p>
-            لقد أنعم الله علينا في أرضنا الجميلة بمجموعة من المواقع الجغرافية
-            (جدران/كهوف/وديان أخدودية/شلالات...) التي تمكننا من ممارسة رياضة
-            تسلق الجدران ونزولها بواسطة الحبال، وهي رياضة تناسب الجميع،
-            المبتدئين وذوي الخبرة، الصغار والكبار.
-          </p>
-          <p>
-            ندعوك لاختيار المسار الذي يثير اهتمامك وحماسك وأن ترافقنا لتجربة لا
-            تُنسى.
-          </p>
+          <img hidden={!_isMobile} src="/LOGO.svg" alt="" />
+          <div>
+            <h2 id="Title">رفيق طريق</h2>
+            <p>
+              عالمنا مليء بالتجارب الرائعة، بلحظات سحرية، بمناظر طبيعية مجنونة،
+              بصور غير عادية ومشاعر سامية تحفر في أعماق الروح.
+            </p>
+            <p>
+              لقد أنعم الله علينا في أرضنا الجميلة بمجموعة من المواقع الجغرافية
+              (جدران/كهوف/وديان أخدودية/شلالات...) التي تمكننا من ممارسة رياضة
+              تسلق الجدران ونزولها بواسطة الحبال، وهي رياضة تناسب الجميع،
+              المبتدئين وذوي الخبرة، الصغار والكبار.
+            </p>
+            <p>
+              ندعوك لاختيار المسار الذي يثير اهتمامك وحماسك وأن ترافقنا لتجربة
+              لا تُنسى.
+            </p>
+          </div>
         </div>
       </div>
       <div className={style.Info}>
-        <p>
+        <h2>
           <b>يمكنك السفر معنا بإحدى الطريقتين: </b>
-        </p>
-        <p>
+        </h2>
+        <h2>
           <b>رحلة خاصة أو رحلة منظمة</b>
-        </p>
+        </h2>
         <p>
           <b>رحلة خاصة:</b> رحلة تختار فيها طريقك المفضل (جميع المسارات متاحة
           لك) ، وتكوين المجموعة وتاريخ الرحلة والخروج مع مرشدين فقط من أجلك.
@@ -63,22 +107,38 @@ export default function Home() {
           هو الشيء الرئيسي.
         </p>
       </div>
-      <div className={style.gallery} id="Gallery">
-        <ImageSlider slides={SliderData} />
-      </div>
+
+      <ImageSlider />
+
       <div className={style.trips} id="Trips">
         <h1>للتسجيل للرحلات</h1>
         <h3>رحلات في الشمال</h3>
         <div className={style.tripsNorth}>
-          <Trip />
-          <Trip />
-          <Trip />
+          {northenTrips.map((trip) => (
+            <Trip
+              title={trip.tripName}
+              level={trip.difficultyLevelText}
+              age={trip.age}
+              price={trip.price}
+              info={trip.descriptionId}
+              img={trip.img}
+              tripDate={trip.tripDate}
+            />
+          ))}
         </div>
         <h3>رحلات في الجنوب</h3>
         <div className={style.tripsSouth}>
-          <Trip />
-          <Trip />
-          <Trip />
+          {southernTrips.map((trip) => (
+            <Trip
+              title={trip.tripName}
+              level={trip.difficultyLevelText}
+              age={trip.age}
+              price={trip.price}
+              info={trip.descriptionId}
+              img={trip.img}
+              tripDate={trip.tripDate}
+            />
+          ))}
         </div>
       </div>
       <div className={style.QandA} id="QandA">
