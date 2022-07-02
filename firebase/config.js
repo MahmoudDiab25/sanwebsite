@@ -13,6 +13,8 @@ const firebaseConfig = {
   databaseURL: process.env.databaseURL,
 };
 
+console.log(process.env.apiKey);
+
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
