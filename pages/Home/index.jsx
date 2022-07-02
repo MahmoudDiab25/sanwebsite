@@ -31,7 +31,7 @@ export default function Home() {
 
   return (
     <div className={style.homeContainer}>
-      <div className={style.opening}>
+      <div className={style.opening} id="Opening">
         <img
           hidden={_isMobile}
           src="openPiture.JPG"
@@ -107,9 +107,9 @@ export default function Home() {
           هو الشيء الرئيسي.
         </p>
       </div>
-
-      <ImageSlider />
-
+      <div className={style.gallery} id="Gallery">
+        <ImageSlider />
+      </div>
       <div className={style.trips} id="Trips">
         <h1>للتسجيل للرحلات</h1>
         <h3>رحلات في الشمال</h3>

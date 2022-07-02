@@ -62,13 +62,26 @@
     }
   }
 
+  .gallery {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
   .trips {
+    height: auto;
     .tripsNorth,
     .tripsSouth {
       > div {
         margin-bottom: 50px;
       }
     }
+  }
+
+  .QandA {
+    height: auto;
   }
 }
 
@@ -122,7 +135,7 @@
     .Info {
       margin-top: 100px;
       width: 68vw;
-      height: auto;
+
       background-image: url("../../public/infoBack.png");
       background-size: contain;
       background-repeat: no-repeat;
@@ -132,6 +145,7 @@
 
     .gallery {
       margin-top: 100px;
+      height: 60%;
     }
 
     .trips,

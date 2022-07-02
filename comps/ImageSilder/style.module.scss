@@ -49,3 +49,21 @@
   transition-duration: 1s;
   transform: scale(1.08);
 }
+
+@media screen and (min-width: 650px) {
+  .slider {
+    height: 60vh;
+  }
+
+  .image {
+    height: 70vh;
+  }
+
+  .leftArrow {
+    left: -140px;
+  }
+
+  .rightArrow {
+    right: -140px;
+  }
+}
