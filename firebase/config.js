@@ -2,7 +2,7 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/storage";
 import "firebase/compat/firestore";
 
-const firebaseConfig1 = {
+const firebaseConfig = {
   apiKey: process.env.API_KEY,
   authDomain: process.env.AUTH_DOMAIN,
   databaseURL: process.env.DATABASE_URL,
@@ -13,12 +13,8 @@ const firebaseConfig1 = {
   measurementId: process.env.MEASUREMENT_ID,
 };
 
-// console.log(process, "gg");
-
-console.log(firebaseConfig1);
-
 if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig1);
+  firebase.initializeApp(firebaseConfig);
 }
 
 const storage = firebase.storage();
