@@ -1,0 +1,60 @@
+.logoContainer {
+  display: flex;
+  align-items: center;
+  > h3 {
+    font-family: "Markazi Text", serif;
+    font-weight: bolder;
+  }
+  .logo {
+    margin-left: 15px;
+    width: 100px;
+  }
+}
+
+.navItems {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  > a {
+    padding: 0 5px 0 0 !important;
+  }
+  .navItemsLogo {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    left: -20px !important;
+    right: -20px !important;
+    .nav {
+      justify-content: center;
+      .navItemsContainer {
+        margin-right: unset !important;
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+      }
+    }
+    .logoContainer {
+      display: none;
+      align-items: center;
+
+      .logo {
+        width: 60px;
+      }
+    }
+    .navItems {
+      margin-top: 5px;
+      margin-right: 5px;
+      .navItemsLogo {
+        width: 25px;
+        height: 25px;
+      }
+      .navText {
+        display: none;
+      }
+    }
+  }
+}

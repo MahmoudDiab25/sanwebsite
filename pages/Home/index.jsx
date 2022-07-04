@@ -123,6 +123,7 @@ export default function Home() {
               info={trip.descriptionId}
               img={trip.img}
               tripDate={trip.tripDate}
+              key={trip.tripName}
             />
           ))}
         </div>
@@ -137,6 +138,7 @@ export default function Home() {
               info={trip.descriptionId}
               img={trip.img}
               tripDate={trip.tripDate}
+              key={trip.tripName}
             />
           ))}
         </div>

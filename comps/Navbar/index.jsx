@@ -1,82 +1,96 @@
-// import Link from "next/link";
-// import style from "./style.module.scss";
-// import Image from "next/image";
-import React, { Component, useState } from "react";
-import Navbbar from "reactjs-navbar";
+import style from "./style.module.scss";
+import React, { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Navbar, Container, Nav } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { isMobile } from "react-device-detect";
 
 import {
   faHome,
   faImages,
-  faFile,
+  faFileSignature,
   faQuestion,
 } from "@fortawesome/free-solid-svg-icons";
-import "reactjs-navbar/dist/index.css";
 
-const Navbar = () => {
+const NavbarComp = () => {
+  const [_isMobile, setMobile] = useState();
+
+  useEffect(() => {
+    setMobile(isMobile);
+  }, [setMobile]);
   return (
-    <Navbbar
-      logo={"/LOGO.svg"}
-      menuItems={[
-        {
-          title: " المقدمة",
-          icon: faHome,
-          isAuth: true,
-          onClick: () => {
-            // What you want to do...
+    <Navbar
+      bg="light"
+      variant="light"
+      fixed={_isMobile ? "bottom" : "top"}
+      className={style.navbar}
+    >
+      <Container>
+        <Navbar.Brand href="#home" className={style.logoContainer}>
+          <img
+            src="/LOGO.svg"
+            className={style.logo}
+            alt="React Bootstrap logo"
+          />
+          <h3>رفيق طريق</h3>
+        </Navbar.Brand>
 
-            window.location.href = "/#Opening";
-          },
-        },
-        {
-          title: "التسجيل لرحلات ",
-          icon: faFile,
-          isAuth: true,
-          onClick: () => {
-            // What you want to do...
+        <Navbar.Collapse id="basic-navbar-nav" className={style.nav}>
+          <Nav className={[style.navItemsContainer, "me-auto"].join(" ")}>
+            <div className={style.navItems}>
+              <FontAwesomeIcon
+                icon={faHome}
+                className={style.navItemsLogo}
+                onClick={() => {
+                  window.location.href = "#Opening";
+                }}
+              />
+              <Nav.Link href="#Opening" className={style.navText}>
+                المقدمة
+              </Nav.Link>
+            </div>
+            <div className={style.navItems}>
+              <FontAwesomeIcon
+                icon={faFileSignature}
+                className={style.navItemsLogo}
+                onClick={() => {
+                  window.location.href = "#Trips";
+                }}
+              />
+              <Nav.Link href="#Trips" className={style.navText}>
+                التسجيل لرحلات
+              </Nav.Link>
+            </div>
 
-            window.location.href = "/#Trips";
-          },
-        },
-        {
-          title: "اسئلة واجوبة ",
-          icon: faQuestion,
-          isAuth: true,
-          onClick: () => {
-            // What you want to do...
-
-            window.location.href = "/#QandA";
-          },
-        },
-        {
-          title: "صور ",
-          icon: faImages,
-          isAuth: true,
-          onClick: () => {
-            // What you want to do...
-
-            window.location.href = "/#Gallery";
-          },
-        },
-      ]}
-    />
-    // <div className={style.navbarContainer}>
-    //   <div className={style.navButton}>
-    //     <Link href="/Home/#Trips">
-    //       <a>التسجيل لرحلات</a>
-    //       {/* <Image src={faImages} /> */}
-    //     </Link>
-    //     <Link href="/Home/#QandA">
-    //       <a>اسئلة واجوبة</a>
-    //     </Link>
-    //     <Link href="/Home/#Gallery">
-    //       <a>صور</a>
-    //     </Link>
-    //   </div>
-    //   {!isMobile && (
-    //     <Image width="200px" height="150px" src="/LOGO.svg" alt="logo" />
-    //   )}
-    // </div>
+            <div className={style.navItems}>
+              <FontAwesomeIcon
+                icon={faImages}
+                className={style.navItemsLogo}
+                onClick={() => {
+                  window.location.href = "#Gallery";
+                }}
+              />
+              <Nav.Link href="#Gallery" className={style.navText}>
+                صور
+              </Nav.Link>
+            </div>
+            <div className={style.navItems}>
+              <FontAwesomeIcon
+                icon={faQuestion}
+                className={style.navItemsLogo}
+                onClick={() => {
+                  window.location.href = "#QandA";
+                }}
+              />
+              <Nav.Link href="#QandA" className={style.navText}>
+                اسئلة واجوبة
+              </Nav.Link>
+            </div>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 
-export default Navbar;
+export default NavbarComp;
