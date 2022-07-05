@@ -24,6 +24,9 @@ const NavbarComp = () => {
       variant="light"
       fixed={_isMobile ? "bottom" : "top"}
       className={style.navbar}
+      style={{
+        display: isMobile ? "block" : "none",
+      }}
     >
       <Container>
         <Navbar.Brand href="#home" className={style.logoContainer}>

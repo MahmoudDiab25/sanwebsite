@@ -94,7 +94,20 @@
     align-items: center;
     font-family: "Markazi Text", serif;
     font-size: 24px;
+    .desctopNav {
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
 
+      position: absolute;
+      top: 30px;
+      .navItemsDesctop {
+        display: flex;
+        width: 40%;
+        justify-content: space-between;
+        padding-right: 30px;
+      }
+    }
     .navbarContainer {
       height: 90px;
     }
@@ -111,7 +124,7 @@
       }
       .photo2 {
         position: relative;
-        right: 250px;
+        right: 20px;
         top: 130px;
       }
 
@@ -123,7 +136,7 @@
         width: 35vw;
         height: auto;
         position: absolute;
-        right: 790px;
+        right: 600px;
         top: 240px;
 
         p {

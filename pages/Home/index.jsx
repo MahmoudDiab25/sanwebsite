@@ -8,10 +8,6 @@ import { isMobile } from "react-device-detect";
 export default function Home() {
   const [_isMobile, setMobile] = useState();
 
-  useEffect(() => {
-    setMobile(isMobile);
-  }, [setMobile]);
-
   const { docs } = useFirestore("trips");
   const trips = docs;
 
@@ -19,11 +15,15 @@ export default function Home() {
   const [southernTrips, setSouthernTrips] = useState([]);
 
   useEffect(() => {
+    setMobile(isMobile);
+  }, [setMobile]);
+
+  useEffect(() => {
     trips.map((trip) => {
-      if (trip.location === "north") {
+      if (trip.locationZone === "north") {
         setNorthenTrips((northenTrips) => [...northenTrips, trip]);
       }
-      if (trip.location === "south") {
+      if (trip.locationZone === "south") {
         setSouthernTrips((southernTrips) => [...southernTrips, trip]);
       }
     });
@@ -31,6 +31,41 @@ export default function Home() {
 
   return (
     <div className={style.homeContainer}>
+      {!_isMobile && (
+        <div className={style.desctopNav}>
+          <div className={style.navItemsDesctop}>
+            <p
+              onClick={() => {
+                window.location.href = "#Opening";
+              }}
+            >
+              المقدمة
+            </p>
+            <p
+              onClick={() => {
+                window.location.href = "#Trips";
+              }}
+            >
+              التسجيل لرحلات
+            </p>
+            <p
+              onClick={() => {
+                window.location.href = "#Gallery";
+              }}
+            >
+              صور
+            </p>
+            <p
+              onClick={() => {
+                window.location.href = "#QandA";
+              }}
+            >
+              اسئلة واجوبة
+            </p>
+          </div>
+          <img src="LOGO.svg" alt="logo" width="150" />
+        </div>
+      )}
       <div className={style.opening} id="Opening">
         <img
           hidden={_isMobile}
@@ -116,14 +151,17 @@ export default function Home() {
         <div className={style.tripsNorth}>
           {northenTrips.map((trip) => (
             <Trip
+              isMobile={_isMobile}
               title={trip.tripName}
               level={trip.difficultyLevelText}
               age={trip.age}
               price={trip.price}
-              info={trip.descriptionId}
+              description={trip.description}
+              info={trip.info}
               img={trip.img}
               tripDate={trip.tripDate}
-              key={trip.tripName}
+              location={trip.location}
+              key={trip.id}
             />
           ))}
         </div>
@@ -131,14 +169,17 @@ export default function Home() {
         <div className={style.tripsSouth}>
           {southernTrips.map((trip) => (
             <Trip
+              isMobile={_isMobile}
               title={trip.tripName}
               level={trip.difficultyLevelText}
               age={trip.age}
               price={trip.price}
-              info={trip.descriptionId}
+              description={trip.description}
+              info={trip.info}
               img={trip.img}
               tripDate={trip.tripDate}
-              key={trip.tripName}
+              location={trip.location}
+              key={trip.id}
             />
           ))}
         </div>
