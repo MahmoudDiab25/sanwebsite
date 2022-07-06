@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./style.module.scss";
 import useFireStorage from "../../hooks/useFireStorage";
 import ReactModal from "react-modal";
@@ -10,14 +10,16 @@ const Trip = ({
   title,
   description,
   info,
-  dates,
+  tripDate,
   img,
   location,
   isMobile,
+  available,
 }) => {
   const imgUrl = useFireStorage(img);
 
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [msg, setMsg] = useState("");
 
   const closeModal = () => {
     setIsOpen(false);
@@ -25,6 +27,34 @@ const Trip = ({
   const openModal = () => {
     setIsOpen(true);
   };
+
+  const myWhatsappFunction = () => {
+    if (isMobile) {
+      // mobile link
+      window.open(
+        "https://wa.me/+972542338892" + "?text=" + msg,
+        "_blank",
+        "noopener,noreferrer"
+      );
+    } else {
+      // desktop link
+      window.open(
+        "https://web.whatsapp.com/send?phone=+972542338892" + "&text=" + msg,
+        "_blank",
+        "noopener,noreferrer"
+      );
+    }
+  };
+
+  useEffect(() => {
+    if (tripDate.includes("هاتف")) {
+      setMsg(`مرحبا، اود المشاركة في رحلة ${title}، ارجو التواصل معي`);
+    } else {
+      setMsg(
+        `مرحبا، أنا مهتم بالذهاب في رحلة إلى ${title} في تاريخ  ${tripDate}، ارجو التواصل معي`
+      );
+    }
+  }, [title]);
 
   return (
     <div className={style.tripContainer}>
@@ -80,13 +110,14 @@ const Trip = ({
         riaHideApp={false}
         style={{
           content: {
-            inset: isMobile ? "100px 10px 100px 35px" : "70px 400px 50px 0px",
+            inset: isMobile ? "200px 10px 250px 35px" : "70px 400px 50px 0px",
             width: isMobile ? "90vw" : "45vw",
             borderRadius: "15px",
             padding: "unset",
             display: "flex",
             top: isMobile ? "60px" : "100px",
             flexDirection: "column",
+            boxShadow: "4px 7px 8px 7px #888888",
           },
         }}
       >
@@ -118,8 +149,9 @@ const Trip = ({
                   "&navigate=yes"
                 }
                 target="_blank"
+                style={{ paddingRight: "10px" }}
               >
-                <img src="/waze.svg" alt="waze" width="30px" height="30px" />
+                <img src="/waze.png" alt="waze" width="30px" height="30px" />
               </a>
               <a
                 href={
@@ -133,8 +165,8 @@ const Trip = ({
                 <img
                   src="/googleMap.png"
                   alt="googleMap"
-                  width="30px"
-                  height="30px"
+                  width="25px"
+                  height="25px"
                 />
               </a>
             </div>
@@ -149,9 +181,6 @@ const Trip = ({
               {description.desc2}
             </p>
           </div>
-          <div className={style.calenderContainer}>
-            {!isMobile && <h6>تواريخ المتاحة للرحلة </h6>}
-          </div>
           {!isMobile && (
             <div style={{ alignSelf: "end", borderRadius: "15px" }}>
               <img
@@ -162,7 +191,23 @@ const Trip = ({
               />
             </div>
           )}
-          <div className={style.buttomContainer}>Buttom</div>
+          {available ? (
+            <div className={style.dates}>
+              <h6>تاريخ الرحلة المقبلة: {tripDate}</h6>
+              <div className={style.icon}>
+                <p>للاستفسار والتسجيل اضغط هنا</p>
+                <img
+                  src="whatsapp.png"
+                  alt=""
+                  width="30"
+                  height="30"
+                  onClick={myWhatsappFunction}
+                />
+              </div>
+            </div>
+          ) : (
+            <h6 className={style.noTrip}>{tripDate}</h6>
+          )}
         </div>
       </ReactModal>
     </div>

@@ -162,6 +162,7 @@ export default function Home() {
               tripDate={trip.tripDate}
               location={trip.location}
               key={trip.id}
+              available={trip.tripDateAvailable}
             />
           ))}
         </div>
@@ -180,6 +181,7 @@ export default function Home() {
               tripDate={trip.tripDate}
               location={trip.location}
               key={trip.id}
+              available={trip.tripDateAvailable}
             />
           ))}
         </div>
