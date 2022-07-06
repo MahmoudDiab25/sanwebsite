@@ -109,10 +109,27 @@ const Trip = ({
             <h5>{title}</h5>
             <div className={style.locationContainer}>
               <p>{info}</p>
-              <a href="">
+              <a
+                href={
+                  "https://waze.com/ul?ll=" +
+                  location.lat +
+                  "," +
+                  location.lng +
+                  "&navigate=yes"
+                }
+                target="_blank"
+              >
                 <img src="/waze.svg" alt="waze" width="30px" height="30px" />
               </a>
-              <a href="">
+              <a
+                href={
+                  "https://www.google.com/maps/?q=" +
+                  location.lat +
+                  "," +
+                  location.lng
+                }
+                target="_blank"
+              >
                 <img
                   src="/googleMap.svg"
                   alt="googleMap"
