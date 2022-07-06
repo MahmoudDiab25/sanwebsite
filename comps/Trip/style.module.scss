@@ -37,6 +37,10 @@
     .locationContainer {
       display: flex;
       justify-content: space-evenly;
+      a {
+        padding-right: 5px;
+        padding-left: 10px;
+      }
 
       p {
         font-size: 11px;

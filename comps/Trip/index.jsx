@@ -123,7 +123,7 @@ const Trip = ({
               </a>
               <a
                 href={
-                  "https://www.google.com/maps/?q=" +
+                  "https://www.google.com/maps/search/?api=1&query=" +
                   location.lat +
                   "," +
                   location.lng
@@ -131,7 +131,7 @@ const Trip = ({
                 target="_blank"
               >
                 <img
-                  src="/googleMap.svg"
+                  src="/googleMap.png"
                   alt="googleMap"
                   width="30px"
                   height="30px"
