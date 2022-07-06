@@ -10,6 +10,11 @@ const useFirestore = (collection) => {
       snap.forEach((doc) => {
         documents.push(doc.data());
       });
+      const filterTrip = documents.filter((trip) => {
+        if (trip.visible === true) {
+          return trip;
+        }
+      });
       //   const filter = documents
       //     .filter((trip) => {
       //       if (age) {
@@ -36,7 +41,7 @@ const useFirestore = (collection) => {
       //       } else return null;
       //     });
 
-      setDocs(documents);
+      setDocs(filterTrip);
     });
     return () => unsub();
   }, [collection]);

@@ -70,7 +70,7 @@ const Trip = ({
         <p>{description.desc1}</p>
       </div>
       <div className={style.tripDateButton} id="dateButton" onClick={openModal}>
-        لتوريخ الرحل
+        لتواريخ الرحلات
       </div>
 
       <ReactModal

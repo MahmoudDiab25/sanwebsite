@@ -13,19 +13,24 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const NavbarComp = () => {
-  const [_isMobile, setMobile] = useState();
+  const [_isMobile, setMobile] = useState(false);
 
   useEffect(() => {
     setMobile(isMobile);
   }, [setMobile]);
+
   return (
     <Navbar
       bg="light"
       variant="light"
-      fixed={_isMobile ? "bottom" : "top"}
+      // fixed={_isMobile ? "bottom" : "top"}
       className={style.navbar}
       style={{
-        display: isMobile ? "block" : "none",
+        display: _isMobile ? "block" : "none",
+        position: _isMobile ? "fixed" : "relative",
+        bottom: "0",
+        // zIndex: "100",
+        zIndex: "100",
       }}
     >
       <Container>
