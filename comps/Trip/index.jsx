@@ -110,7 +110,7 @@ const Trip = ({
         riaHideApp={false}
         style={{
           content: {
-            inset: isMobile ? "180px 10px 100px 35px" : "70px 400px 50px 0px",
+            inset: isMobile ? "80px 10px 120px 35px" : "70px 400px 50px 0px",
             width: isMobile ? "90vw" : "45vw",
             borderRadius: "15px",
             padding: "unset",
