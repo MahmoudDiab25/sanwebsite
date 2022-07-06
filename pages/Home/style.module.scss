@@ -30,7 +30,8 @@
       align-items: center;
       flex-direction: column;
       > img {
-        padding-top: 50px;
+        padding-top: 30px;
+        padding-bottom: 30px;
         width: 200px;
       }
       h2 {
@@ -73,16 +74,25 @@
 
   .trips {
     height: auto;
+    display: flex;
+    flex-direction: column;
     .tripsNorth,
     .tripsSouth {
       > div {
         margin-bottom: 50px;
       }
     }
+    h5 {
+      padding: 20px 0 20px 0;
+      align-self: center;
+    }
   }
 
   .QandA {
     height: auto;
+    h1 {
+      padding-bottom: 30px;
+    }
   }
 }
 

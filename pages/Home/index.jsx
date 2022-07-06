@@ -147,7 +147,7 @@ export default function Home() {
       </div>
       <div className={style.trips} id="Trips">
         <h1>للتسجيل للرحلات</h1>
-        <h3>رحلات في الشمال</h3>
+        <h5>رحلات في الشمال</h5>
         <div className={style.tripsNorth}>
           {northenTrips.map((trip) => (
             <Trip
@@ -165,7 +165,7 @@ export default function Home() {
             />
           ))}
         </div>
-        <h3>رحلات في الجنوب</h3>
+        <h5>رحلات في الجنوب</h5>
         <div className={style.tripsSouth}>
           {southernTrips.map((trip) => (
             <Trip
