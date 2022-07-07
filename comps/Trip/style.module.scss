@@ -28,8 +28,7 @@
   padding: 15px;
   width: 100%;
   height: 100%;
-  // display: flex;
-  // flex-direction: column;
+
   .header {
     display: flex;
     flex-direction: column;
@@ -73,20 +72,22 @@
       }
     }
   }
-  .dates {
-    margin-top: 50px;
-    .icon {
-      padding-top: 20px;
-      display: flex;
-      text-align: center;
-      > img {
-        margin-right: 20px;
+  .imgAndDate {
+    .dates {
+      margin-top: 50px;
+      .icon {
+        padding-top: 20px;
+        display: flex;
+        text-align: center;
+        > img {
+          margin-right: 20px;
+        }
       }
     }
-  }
-  .noTrip {
-    margin-top: 50px;
-    color: red;
+    .noTrip {
+      margin-top: 50px;
+      color: red;
+    }
   }
 }
 
@@ -177,19 +178,6 @@
       font-size: 20px;
     }
   }
-  .tripDateButton {
-    align-self: center;
-    justify-self: flex-end;
-    font-size: 20px;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-      sans-serif;
-    background-color: #7aa9b8;
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    text-align: center;
-    width: 40%;
-  }
 }
 
 @media screen and (min-width: 768px) {
@@ -207,12 +195,15 @@
       width: 90%;
     }
 
-    .calenderContainer {
-      align-self: flex-start;
-    }
-    .buttomContainer {
-      align-self: center;
-      justify-self: end;
+    .imgAndDate {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+
+      .dates {
+        margin-top: 20px;
+        padding-left: 30px;
+      }
     }
   }
 }

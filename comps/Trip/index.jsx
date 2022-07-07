@@ -110,14 +110,15 @@ const Trip = ({
         riaHideApp={false}
         style={{
           content: {
-            inset: isMobile ? "80px 10px 120px 35px" : "70px 400px 50px 0px",
-            width: isMobile ? "90vw" : "45vw",
+            inset: isMobile ? "80px 10px 120px" : "70px 400px 60px ",
+            width: isMobile ? "90vw" : "50vw",
             borderRadius: "15px",
             padding: "unset",
             display: "flex",
             top: isMobile ? "60px" : "100px",
             flexDirection: "column",
             boxShadow: "4px 7px 8px 7px #888888",
+            backgroundColor: "#DFE9ED",
           },
         }}
       >
@@ -181,33 +182,35 @@ const Trip = ({
               {description.desc2}
             </p>
           </div>
-          {!isMobile && (
-            <div style={{ alignSelf: "end", borderRadius: "15px" }}>
-              <img
-                src={imgUrl}
-                alt="image"
-                width="200"
-                style={{ borderRadius: "15px" }}
-              />
-            </div>
-          )}
-          {available ? (
-            <div className={style.dates}>
-              <h6>تاريخ الرحلة المقبلة: {tripDate}</h6>
-              <div className={style.icon}>
-                <p>للاستفسار والتسجيل اضغط هنا</p>
+          <div className={style.imgAndDate}>
+            {!isMobile && (
+              <div className={style.popupImg}>
                 <img
-                  src="whatsapp.png"
-                  alt=""
-                  width="30"
-                  height="30"
-                  onClick={myWhatsappFunction}
+                  src={imgUrl}
+                  alt="image"
+                  width="250"
+                  style={{ borderRadius: "15px" }}
                 />
               </div>
-            </div>
-          ) : (
-            <h6 className={style.noTrip}>{tripDate}</h6>
-          )}
+            )}
+            {available ? (
+              <div className={style.dates}>
+                <h6>تاريخ الرحلة المقبلة: {tripDate}</h6>
+                <div className={style.icon}>
+                  <p>للاستفسار والتسجيل اضغط هنا</p>
+                  <img
+                    src="whatsapp.png"
+                    alt=""
+                    width="30"
+                    height="30"
+                    onClick={myWhatsappFunction}
+                  />
+                </div>
+              </div>
+            ) : (
+              <h6 className={style.noTrip}>{tripDate}</h6>
+            )}
+          </div>
         </div>
       </ReactModal>
     </div>
