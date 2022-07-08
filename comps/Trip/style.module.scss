@@ -178,7 +178,7 @@
       font-size: 20px;
     }
   }
-.tripDateButton {
+  .tripDateButton {
     align-self: center;
     justify-self: flex-end;
     font-size: 20px;
@@ -212,6 +212,13 @@
       display: flex;
       flex-direction: row-reverse;
       justify-content: space-between;
+
+      .popupImg {
+        border-radius: 15px;
+        height: auto;
+        max-height: 300px;
+        overflow: hidden;
+      }
 
       .dates {
         margin-top: 20px;

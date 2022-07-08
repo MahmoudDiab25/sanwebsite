@@ -109,15 +109,23 @@ const Trip = ({
         shouldCloseOnOverlayClick
         riaHideApp={false}
         style={{
+          overlay: {
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: "-70px",
+            bottom: 0,
+            backgroundColor: "rgba(255, 255, 255, 0.8)",
+          },
           content: {
-            inset: isMobile ? "80px 10px 120px" : "70px 400px 60px ",
+            inset: isMobile ? "80px 80px 120px" : "30px 25% 50px ",
             width: isMobile ? "90vw" : "50vw",
             borderRadius: "15px",
             padding: "unset",
             display: "flex",
             top: isMobile ? "60px" : "100px",
             flexDirection: "column",
-            boxShadow: "4px 7px 8px 7px #888888",
+            boxShadow: "0px 3px 10px 4px #888888",
             backgroundColor: "#DFE9ED",
           },
         }}
