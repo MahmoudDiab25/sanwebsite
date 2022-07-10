@@ -30,6 +30,7 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      padding: 0 20px;
       > img {
         padding-top: 30px;
         padding-bottom: 30px;
@@ -55,7 +56,7 @@
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
-
+    padding: 0 20px;
     h2 {
       font-family: "Markazi Text", serif;
     }
@@ -66,12 +67,13 @@
   }
 
   .gallery {
-    height: auto;
+    height: 30vh;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-top: 20vw;
+    margin-top: 50px;
+    padding: 0 20px;
   }
 
   .trips {
@@ -87,6 +89,9 @@
 
     .tripsNorth,
     .tripsSouth {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       > div {
         margin-bottom: 50px;
       }
@@ -99,8 +104,57 @@
 
   .QandA {
     height: auto;
+    padding: 0 20px;
+    margin-bottom: 50px;
     h1 {
       padding-bottom: 30px;
+    }
+  }
+}
+
+@media screen and (max-width: 290px) {
+  .homeContainer {
+    .opening {
+      .openingText {
+        p {
+          font-size: 18px;
+        }
+      }
+    }
+
+    .Info {
+      > h2 {
+        font-size: 20px;
+      }
+      > p {
+        font-size: 18px;
+      }
+    }
+
+    .trips,
+    .QandA {
+      padding: 0 20px;
+    }
+    .trips {
+      font-family: "Markazi Text", serif;
+      h1 {
+        font-weight: bolder;
+      }
+    }
+    .QandA {
+      font-family: "Markazi Text", serif;
+      h1 {
+        font-size: 35px;
+        font-weight: bolder;
+      }
+      h4 {
+        font-size: 20px;
+        font-family: "Markazi Text", serif;
+        font-weight: bolder;
+      }
+      p {
+        font-size: 15px;
+      }
     }
   }
 }
@@ -113,23 +167,7 @@
     align-items: center;
     font-family: "Markazi Text", serif;
     font-size: 24px;
-    .desctopNav {
-      display: flex;
-      justify-content: space-between;
-      width: 90%;
 
-      position: absolute;
-      top: 30px;
-      .navItemsDesctop {
-        display: flex;
-        width: 40%;
-        justify-content: space-between;
-        padding-right: 30px;
-      }
-    }
-    .navbarContainer {
-      height: 90px;
-    }
     .opening {
       width: 100%;
       display: flex;
@@ -140,6 +178,7 @@
         height: 100%;
         position: relative;
         top: 110px;
+        right: 90px;
       }
       .photo2 {
         position: relative;
@@ -178,6 +217,7 @@
     .gallery {
       margin-top: 100px;
       height: 60%;
+      width: 50%;
     }
 
     .trips,

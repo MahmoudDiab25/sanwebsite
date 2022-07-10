@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import style from "./style.module.scss";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 import useFireStorageGallery from "../../hooks/useFireStorageGallery";
+import Image from "next/image";
 
 const ImageSlider = () => {
   const sliderData = useFireStorageGallery("Gallery");
@@ -25,18 +26,26 @@ const ImageSlider = () => {
     <section className={style.slider}>
       <FaArrowAltCircleLeft className={style.leftArrow} onClick={prevSlide} />
       <FaArrowAltCircleRight className={style.rightArrow} onClick={nextSlide} />
-      {sliderData.map((slide, index) => {
-        return (
-          <div
-            className={index === current ? style.slideActive : style.slide}
-            key={index}
-          >
-            {index === current && (
-              <img src={slide} alt="travel image" className={style.image} />
-            )}
-          </div>
-        );
-      })}
+      <div className={style.imageSlideContainer}>
+        {sliderData.map((slide, index) => {
+          return (
+            <div
+              className={index === current ? style.slideActive : style.slide}
+              key={index}
+            >
+              {index === current && (
+                <Image
+                  src={slide}
+                  alt="travel image"
+                  className={style.image}
+                  width={400}
+                  height={600}
+                />
+              )}
+            </div>
+          );
+        })}
+      </div>
     </section>
   );
 };

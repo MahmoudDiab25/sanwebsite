@@ -31,41 +31,6 @@ export default function Home() {
 
   return (
     <div className={style.homeContainer}>
-      {!_isMobile && (
-        <div className={style.desctopNav}>
-          <div className={style.navItemsDesctop}>
-            <p
-              onClick={() => {
-                window.location.href = "#Opening";
-              }}
-            >
-              المقدمة
-            </p>
-            <p
-              onClick={() => {
-                window.location.href = "#Trips";
-              }}
-            >
-              التسجيل لرحلات
-            </p>
-            <p
-              onClick={() => {
-                window.location.href = "#Gallery";
-              }}
-            >
-              صور
-            </p>
-            <p
-              onClick={() => {
-                window.location.href = "#QandA";
-              }}
-            >
-              اسئلة واجوبة
-            </p>
-          </div>
-          <img src="LOGO.svg" alt="logo" width="150" />
-        </div>
-      )}
       <div className={style.opening} id="Opening">
         <img
           hidden={_isMobile}

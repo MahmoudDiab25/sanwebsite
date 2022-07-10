@@ -1,69 +1,85 @@
 .slider {
   position: relative;
-  margin-top: 100px;
-  margin-bottom: 100px;
   height: 30vh;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 60%;
+  .rightArrow {
+    position: absolute;
+    top: 50%;
+    right: -70px;
+    font-size: 2.5rem;
+    color: #000;
+    z-index: 0;
+    cursor: pointer;
+    user-select: none;
+  }
+  .leftArrow {
+    position: absolute;
+    top: 50%;
+    left: -70px;
+    font-size: 2.5rem;
+    color: #000;
+    z-index: 0;
+    cursor: pointer;
+    user-select: none;
+  }
+  .imageSlideContainer {
+    width: 80%;
+    .slide {
+      opacity: 0;
+      transition: 0s 1s ease;
+      display: none;
+    }
+
+    .slideActive {
+      opacity: 1;
+      display: block;
+      transition-duration: 1s;
+      transform: scale(1.08);
+    }
+    .image {
+      border-radius: 10px;
+    }
+  }
 }
 
-.image {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-}
+@media screen and (max-width: 290px) {
+  .slider {
+    // width: 100%;
 
-.rightArrow {
-  position: absolute;
-  top: 50%;
-  right: -70px;
-  font-size: 2.5rem;
-  color: #000;
-  z-index: 0;
-  cursor: pointer;
-  user-select: none;
+    .leftArrow,
+    .rightArrow {
+      width: 30px;
+    }
+    .leftArrow {
+      left: -50px;
+    }
+    .rightArrow {
+      right: -50px;
+    }
+  }
 }
-
-.leftArrow {
-  position: absolute;
-  top: 50%;
-  left: -70px;
-  font-size: 2.5rem;
-  color: #000;
-  z-index: 0;
-  cursor: pointer;
-  user-select: none;
-}
-
-.slide {
-  opacity: 0;
-  transition-duration: 1s ease;
-  display: none;
-}
-
-.slideActive {
-  opacity: 1;
-  display: block;
-  transition-duration: 1s;
-  transform: scale(1.08);
-}
-
 @media screen and (min-width: 650px) {
   .slider {
     height: 60vh;
-  }
+    width: 35vw;
 
-  .image {
-    height: 70vh;
-  }
+    .leftArrow {
+      left: -140px;
+    }
 
-  .leftArrow {
-    left: -140px;
-  }
-
-  .rightArrow {
-    right: -140px;
+    .rightArrow {
+      right: -140px;
+    }
+    .imageSlideContainer {
+      .slideActive {
+        .image {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
   }
 }

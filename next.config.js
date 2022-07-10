@@ -5,6 +5,9 @@ const nextConfig = {
   resolve: {
     extensions: ["", ".js", ".jsx"],
   },
+  images: {
+    domains: ["firebasestorage.googleapis.com"],
+  },
 };
 
 module.exports = nextConfig;

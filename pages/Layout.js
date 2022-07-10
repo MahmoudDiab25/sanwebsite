@@ -1,12 +1,11 @@
 import Navbar from "../comps/Navbar";
-import Footer from "../comps/Footer";
+// import Footer from "../comps/Footer";
 import style from "./style.module.scss";
 const Layout = ({ children }) => {
   return (
-    <div className={style.fronPageContaier}>
+    <div>
       <Navbar />
-      {children}
-      <Footer />
+      <div className={style.fronPageContaier}>{children}</div>
     </div>
   );
 };
