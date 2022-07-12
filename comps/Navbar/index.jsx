@@ -11,10 +11,12 @@ import {
   faImages,
   faFileSignature,
   faQuestion,
+  faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 
 const NavbarComp = () => {
   const [_isMobile, setMobile] = useState(false);
+  const [showPhoneNumber, setShowPhoneNumber] = useState(false);
 
   useEffect(() => {
     setMobile(isMobile);
@@ -52,6 +54,7 @@ const NavbarComp = () => {
           اسئلة واجوبة
         </p>
       </div>
+      <p className={style.phoneNumber}>054-233-8892 :SAN AJAMI</p>
       <Image src="/LOGO.svg" alt="logo" width={150} height={150} />
     </div>
   ) : (
@@ -89,6 +92,24 @@ const NavbarComp = () => {
           window.location.href = "#QandA";
         }}
       />
+      <FontAwesomeIcon
+        icon={faPhone}
+        className={style.navItemsLogo}
+        onClick={() => {
+          setShowPhoneNumber(!showPhoneNumber);
+        }}
+      />
+      <p
+        className={style.navPhoneNum}
+        style={{
+          bottom: showPhoneNumber ? "30px" : "-60px",
+          animation: showPhoneNumber
+            ? "style_goUp__HF7ow 1s "
+            : "style_goDown__O2c33 1s",
+        }}
+      >
+        054-233-8892
+      </p>
     </div>
   );
 };
