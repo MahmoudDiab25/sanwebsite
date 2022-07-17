@@ -99,7 +99,8 @@ const NavbarComp = () => {
           setShowPhoneNumber(!showPhoneNumber);
         }}
       />
-      <p
+      <a
+        href="tel:054-233-8892"
         className={style.navPhoneNum}
         style={{
           bottom: showPhoneNumber ? "30px" : "-60px",
@@ -109,7 +110,7 @@ const NavbarComp = () => {
         }}
       >
         054-233-8892
-      </p>
+      </a>
     </div>
   );
 };
