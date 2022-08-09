@@ -19,6 +19,8 @@ export default function Home() {
   }, [setMobile]);
 
   useEffect(() => {
+    setNorthenTrips([]);
+    setSouthernTrips([]);
     trips.map((trip) => {
       if (trip.locationZone === "north") {
         setNorthenTrips((northenTrips) => [...northenTrips, trip]);
