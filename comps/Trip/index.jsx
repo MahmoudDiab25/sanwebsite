@@ -189,6 +189,12 @@ const Trip = ({
               <div />
               <p>{description.desc2}</p>
             </div>
+            {description.desc3 && (
+              <div>
+                <div />
+                <p>{description.desc3}</p>
+              </div>
+            )}
           </div>
           <div className={style.imgAndDate}>
             {!isMobile && (
