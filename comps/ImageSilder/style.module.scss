@@ -44,6 +44,14 @@
     }
   }
 }
+@media screen and (max-width: 350px) {
+  .slider {
+    .leftArrow,
+    .rightArrow {
+      font-size: 2rem;
+    }
+  }
+}
 
 @media screen and (max-width: 290px) {
   .slider {

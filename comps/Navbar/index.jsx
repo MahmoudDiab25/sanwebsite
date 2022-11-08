@@ -55,7 +55,13 @@ const NavbarComp = () => {
         </p>
       </div>
       <p className={style.phoneNumber}>054-233-8892 :SAN AJAMI</p>
-      <Image src="/LOGO.svg" alt="logo" width={150} height={150} />
+      <Image
+        src="/LOGO2.jpg"
+        alt="logo"
+        width={100}
+        height={100}
+        style={{ borderRadius: "50%" }}
+      />
     </div>
   ) : (
     <div

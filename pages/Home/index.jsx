@@ -10,7 +10,7 @@ export default function Home() {
 
   const { docs } = useFirestore("trips");
   const trips = docs;
-
+  console.log(trips);
   const [northenTrips, setNorthenTrips] = useState([]);
   const [southernTrips, setSouthernTrips] = useState([]);
 
@@ -54,7 +54,7 @@ export default function Home() {
         />
 
         <div className={style.openingText}>
-          <img hidden={!_isMobile} src="/LOGO.svg" alt="" />
+          <img hidden={!_isMobile} src="/LOGO2.jpg" alt="" />
           <div>
             <h2 id="Title">رفيق طريق</h2>
             <p>
